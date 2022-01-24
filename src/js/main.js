@@ -30,7 +30,7 @@ if ($("#name").val() === '') {
     );
 }
 
-$("#name").change(function () {
+$("#name").on("input",function () {
     let searchText = $('#name').val();
     console.log("there is a change")
     $(".article").remove();

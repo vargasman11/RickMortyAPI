@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>API</title>
+    <title>API RICK MORTY</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="main.css" rel="stylesheet">
 </head>
@@ -20,20 +20,25 @@
     <div class="page-title">
         <h1>Rick and Morty Characters</h1>
     </div>
+
+    <!-- Form Filter -->
     <div class="filter-container">
         <form action="">
             <label for="name">Filter By</label>
             <input type="text" name="name" class="name" id="name">
         </form>
     </div>
+
+    <!-- Article container where cards will live -->
     <div class="article-container">
         <div class="article">
         </div>
     </div>
 
+    <!-- Buttons for pagination -->
     <div class="pagination">
-        <div class="btn" id="prev">Prev</div>
-        <div class="btn" id="next">Next</div>
+        <button class="btn" id="prev">Prev</button>
+        <button class="btn" id="next">Next</button>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

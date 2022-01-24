@@ -1,7 +1,10 @@
 header {
-  //background-color: red;
+  background-color: #ffffff;
   display: flex;
   border-bottom: solid 1px #000000;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   a {
     display: flex;

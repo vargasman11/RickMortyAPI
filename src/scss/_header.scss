@@ -1,12 +1,24 @@
-header{
+header {
   //background-color: red;
   display: flex;
-  a{
+  border-bottom: solid 1px #000000;
+
+  a {
     display: flex;
     justify-content: center;
     align-items: center;
-    svg{
+    padding: 10px;
+
+    svg {
       fill: #000000;
     }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

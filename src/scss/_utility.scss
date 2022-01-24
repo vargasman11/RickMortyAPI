@@ -1,0 +1,21 @@
+$mobile-width: 576px;
+$tablet-width: 992px;
+$desktop-width: 1200px;
+
+.btn{
+  background-color: #efefef;
+  border: solid 1px #000000;
+  border-radius: 5px;
+  padding: 5px 25px;
+}
+.btn:hover{
+  background-color: #f1e7e7;
+  cursor: pointer;
+}
+
+.pagination{
+  padding: 0 0 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

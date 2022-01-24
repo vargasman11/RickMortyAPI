@@ -77,12 +77,24 @@ select {
 }
 header {
   display: flex;
+  border-bottom: solid 1px #000000;
 }
 header a {
-  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+}
+header a svg {
+  fill: #000000;
+}
+
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /*# sourceMappingURL=main.css.map*/

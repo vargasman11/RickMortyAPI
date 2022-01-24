@@ -27,3 +27,9 @@ Requirements
 - Apply ADA compliance to the page
 - Create the pagination based on the API results, if click next then show new characters
   Mock up
+
+## build
+I built this out using webpack. Please use "npm run start" to get the project up and running in your local machine running. 
+I've added a browserslist and postcss config file as well. I used JQUERY CDN in the html file.
+
+You can find all the JS and SASS files under the "src" directory.

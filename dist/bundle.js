@@ -1,11 +1,11 @@
-/******/ (() => { // webpackBootstrap
+/******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/scss/index.scss":
 /*!*****************************!*\
   !*** ./src/scss/index.scss ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -18,9 +18,84 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
-/***/ (() => {
+/***/ (function() {
 
-$('header').addClass("juice")
+if ($("#name").val() === '') {
+    console.log("no change")
+    let url = 'https://rickandmortyapi.com/api/character';
+    $.get(`${url}`, function (res, status) {
+            if (status === 'success') {
+                let characters = res.results;
+                characters.forEach(el => {
+                    let imgUrl = el.image;
+                    let name = el.name;
+
+                    $('.article').append(
+                        $(`<div class="card" id="character-${el.id}">
+                        <div class="card__img-container">
+                            <img class="card__img" src=${imgUrl} alt="img">
+                        </div>
+                        <div class="card__meta">
+                            <div class="card__meta__name">${name}</div>
+                            <div class="card__meta__delete btn" id="remove-ch-${el.id}">Delete</div>
+                        </div>
+                     </div>
+                    `)
+                    );
+
+                    $(`#remove-ch-${el.id}`).click(function () {
+                        $(`#character-${el.id}`).remove();
+                    })
+                })
+            }
+        }
+    );
+}
+
+$("#name").on("input",function () {
+    let searchText = $('#name').val();
+    console.log("there is a change")
+    $(".article").remove();
+    $(".article-container").append(`<div class="article"></div>`)
+    let url = `https://rickandmortyapi.com/api/character/?name=` + searchText;
+    $.get(`${url}`, function (res, status) {
+            if (status === 'success') {
+                let characters = res.results;
+                characters.forEach(el => {
+                    let imgUrl = el.image;
+                    let name = el.name;
+
+                    $('.article').append(
+                        $(`<div class="card" id="character-${el.id}">
+                        <div class="card__img-container">
+                            <img class="card__img" src=${imgUrl} alt="img">
+                        </div>
+                        <div class="card__meta">
+                            <div class="card__meta__name">${name}</div>
+                            <div class="card__meta__delete btn" id="remove-ch-${el.id}">Delete</div>
+                        </div>
+                     </div>
+                    `)
+                    );
+
+                    $(`#remove-ch-${el.id}`).click(function () {
+                        $(`#character-${el.id}`).remove();
+                    })
+                })
+            }
+        }
+    );
+})
+
+
+
+let removeCharacter = function (id) {
+    $("#character-" + id).remove();
+}
+
+
+
+
 
 /***/ })
 
@@ -52,49 +127,49 @@ $('header').addClass("juice")
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
+/******/ 		__webpack_require__.n = function(module) {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 		__webpack_require__.d = function(exports, definition) {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
+/******/ 	!function() {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
+/******/ 		__webpack_require__.r = function(exports) {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	})();
+/******/ 	}();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
+!function() {
 "use strict";
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -107,8 +182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-})();
-
+}();
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map

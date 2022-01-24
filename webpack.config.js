@@ -1,8 +1,5 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const {extendDefaultPlugins} = require("svgo");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
@@ -16,9 +13,6 @@ module.exports = {
     devtool: "source-map",
     devServer: {
         port: 2000,
-        // liveReload: true,
-        // watchFiles: ['src/**/*.scss', 'src/*.js'],
-        // hot : true,
         static: {
             directory: path.join(__dirname, '/dist'),
         },
@@ -27,21 +21,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css"
         }),
-        // new HtmlWebpackPlugin({
-        //     title: "API",
-        //     filename: "index.html"
-        // }),
-        //Comment this out if you do not want to use this, this was put in place to proxy mamp development.
-        // new BrowserSyncPlugin({
-        //     // browse to http://localhost:3000/ during development,
-        //     // ./public directory is being served
-        //     host: 'localhost',
-        //     port: 3000,
-        //     files:['./src/scss/**/*.scss', ],
-        //     // server: { baseDir: ['public'] }
-        //     proxy: 'http://localhost'
-        // })
-
     ],
     module: {
         rules: [
@@ -64,23 +43,4 @@ module.exports = {
             },
         ],
     },
-    optimization: {
-        minimizer: [
-            new ImageMinimizerPlugin({
-                minimizer: {
-                    implementation: ImageMinimizerPlugin.imageminMinify,
-                    options: {
-                        plugins: [
-                            "imagemin-gifsicle",
-                            "imagemin-mozjpeg",
-                            "imagemin-pngquant",
-                            "imagemin-svgo",
-                        ],
-                    },
-                },
-                // Disable `loader`
-                loader: false,
-            }),
-        ]
-    }
 }
